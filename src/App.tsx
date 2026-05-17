@@ -95,6 +95,22 @@ stack(
 const defaultStarter = starterTracks[0];
 
 const starterCode = defaultStarter.code;
+const githubRepoUrl = "https://github.com/self-tech-labs/voice-strudel";
+
+const projectSteps = [
+  {
+    title: "Clone",
+    copy: "Grab the repo and keep the OpenAI key on your machine.",
+  },
+  {
+    title: "Run",
+    copy: "Start the Vite app plus the tiny local session bridge.",
+  },
+  {
+    title: "Hack",
+    copy: "Speak, preview, approve, and change the Strudel pattern.",
+  },
+];
 
 function parseToolArgs(value: string): StrudelToolArgs {
   const parsed = JSON.parse(value) as Partial<StrudelToolArgs>;
@@ -162,6 +178,10 @@ function eventLabel(event: RealtimeEvent) {
 }
 
 export default function App() {
+  const showLocalRig =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname === "::1";
   const [status, setStatus] = useState<Status>("idle");
   const [lastCode, setLastCode] = useState(starterCode);
   const [lastSummary, setLastSummary] = useState(`${defaultStarter.name} selected.`);
@@ -592,7 +612,58 @@ export default function App() {
   }
 
   return (
-    <main className="app">
+    <main className="page">
+      <section className="landingShell">
+        <header className="siteNav" aria-label="Project navigation">
+          <a className="wordmark" href="#top">
+            <span aria-hidden="true" />
+            voice-strudel
+          </a>
+          <nav>
+            <a href="#demo">demo</a>
+            {showLocalRig ? <a href="#local-rig">rig</a> : null}
+            <a href={githubRepoUrl}>repo</a>
+          </nav>
+        </header>
+
+        <section className="hero" id="top">
+          <div className="heroCopy">
+            <h1>voice-strudel</h1>
+            <p className="heroLead">Speak a music idea. Preview the pattern. Let Strudel play it.</p>
+            <p className="installNote">Public page = poster. The actual voice rig is for people who clone and run it locally.</p>
+            <div className="heroActions">
+              <a className="buttonLink primaryLink" href={githubRepoUrl}>
+                View on GitHub
+              </a>
+              <a className="buttonLink secondaryLink" href="#demo">
+                Watch demo
+              </a>
+            </div>
+          </div>
+
+          <div className="demoModule" id="demo">
+            <div className="demoTopline">
+              <span>demo tape</span>
+              <span>00:16</span>
+            </div>
+            <video className="demoVideo" src="/voice-strudel-demo.mp4" autoPlay muted loop playsInline controls />
+            <p>Demo uses typed input; normal use is voice.</p>
+          </div>
+        </section>
+
+        <section className="miniSteps" aria-label="How the project works">
+          {projectSteps.map((step, index) => (
+            <div className="step" key={step.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{step.title}</strong>
+              <p>{step.copy}</p>
+            </div>
+          ))}
+        </section>
+      </section>
+
+      {showLocalRig ? (
+      <section className="app" id="local-rig" aria-label="Local voice-strudel rig">
       <section className="topbar">
         <div>
           <h1>voice-strudel</h1>
@@ -699,6 +770,8 @@ export default function App() {
           <p>No events yet.</p>
         )}
       </section>
+      </section>
+      ) : null}
     </main>
   );
 }

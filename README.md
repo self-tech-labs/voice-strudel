@@ -6,6 +6,8 @@ Speak a music idea. Preview what the model thinks you meant. Let Strudel play it
 
 It is intentionally small: no accounts, no database, no DAW, no MIDI, no embedded Strudel editor. Just a fast little idea loop for making patterns.
 
+The hosted landing page is only a public presentation for the project. The working voice rig is designed to be cloned and run locally so your OpenAI API key stays on your machine.
+
 ## Features
 
 - Local Vite + React + TypeScript browser app.

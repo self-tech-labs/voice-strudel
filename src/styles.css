@@ -1,6 +1,6 @@
 :root {
-  color: #f5f5f0;
-  background: #111;
+  color: #12120f;
+  background: #f4f0dd;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
@@ -10,11 +10,24 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #111;
+  background:
+    linear-gradient(rgba(18, 18, 15, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 18, 15, 0.045) 1px, transparent 1px),
+    #f4f0dd;
+  background-size: 40px 40px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 button,
@@ -23,13 +36,13 @@ input {
 }
 
 button {
+  min-height: 42px;
+  padding: 0 14px;
   border: 1px solid #4b4b45;
   border-radius: 6px;
   background: #eeeedf;
   color: #111;
   cursor: pointer;
-  min-height: 42px;
-  padding: 0 14px;
 }
 
 button:disabled {
@@ -43,9 +56,10 @@ button.secondary {
 }
 
 button:focus-visible,
-input:focus-visible {
-  outline: 2px solid #f0c46a;
-  outline-offset: 2px;
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid #ef5148;
+  outline-offset: 3px;
 }
 
 input {
@@ -58,10 +72,212 @@ input {
   padding: 0 12px;
 }
 
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.landingShell {
+  width: min(1180px, calc(100vw - 40px));
+  margin: 0 auto;
+  padding: 22px 0 0;
+}
+
+.siteNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  gap: 18px;
+  border-bottom: 2px solid #12120f;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.wordmark span {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #12120f;
+  border-radius: 5px;
+  background: #ef5148;
+  box-shadow: 5px 0 0 #f3c744, 10px 0 0 #68a9e8;
+}
+
+.siteNav nav {
+  display: flex;
+  gap: 18px;
+}
+
+.siteNav nav a {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero {
+  min-height: 550px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(430px, 1.15fr);
+  align-items: center;
+  gap: 46px;
+  padding: 38px 0 26px;
+}
+
+.heroCopy h1 {
+  max-width: 520px;
+  font-size: 96px;
+  line-height: 0.92;
+  font-weight: 820;
+  letter-spacing: 0;
+}
+
+.heroLead {
+  max-width: 430px;
+  margin-top: 24px;
+  font-size: 24px;
+  line-height: 1.12;
+  font-weight: 650;
+}
+
+.installNote {
+  max-width: 430px;
+  margin-top: 16px;
+  color: #484439;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.buttonLink {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #12120f;
+  border-radius: 7px;
+  padding: 0 17px;
+  font-weight: 760;
+  box-shadow: 4px 4px 0 #12120f;
+}
+
+.primaryLink {
+  background: #ef5148;
+  color: #fff9ed;
+}
+
+.secondaryLink {
+  background: #fbf8e9;
+}
+
+.buttonLink:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 3px 3px 0 #12120f;
+}
+
+.demoModule {
+  overflow: hidden;
+  border: 2px solid #12120f;
+  border-radius: 8px;
+  background: #fbf8e9;
+  box-shadow: 10px 10px 0 #12120f;
+}
+
+.demoTopline {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 2px solid #12120f;
+  padding: 0 14px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+}
+
+.demoVideo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: #11110f;
+  object-fit: cover;
+}
+
+.demoModule p {
+  border-top: 2px solid #12120f;
+  padding: 12px 14px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.miniSteps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 2px solid #12120f;
+  border-bottom: 2px solid #12120f;
+}
+
+.step {
+  min-height: 124px;
+  padding: 18px 22px;
+}
+
+.step + .step {
+  border-left: 2px solid #12120f;
+}
+
+.step span {
+  display: block;
+  color: #ef5148;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.step strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.step p {
+  margin-top: 8px;
+  color: #484439;
+  line-height: 1.4;
+}
+
 .app {
   width: min(920px, calc(100vw - 32px));
-  margin: 0 auto;
-  padding: 32px 0;
+  margin: 54px auto 44px;
+  padding: 28px;
+  border: 2px solid #12120f;
+  border-radius: 8px;
+  background: #111;
+  color: #f5f5f0;
+  box-shadow: 8px 8px 0 #12120f;
+  scroll-margin-top: 18px;
 }
 
 .topbar {
@@ -73,13 +289,7 @@ input {
   padding-bottom: 18px;
 }
 
-h1,
-h2,
-p {
-  margin: 0;
-}
-
-h1 {
+.topbar h1 {
   font-size: 32px;
   line-height: 1.05;
   font-weight: 700;
@@ -158,8 +368,8 @@ h2 {
 }
 
 .starterCard {
-  display: flex;
   min-height: 150px;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
@@ -259,13 +469,13 @@ h2 {
 }
 
 .pulse {
+  width: 54px;
+  min-width: 54px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  width: 54px;
-  min-width: 54px;
-  height: 42px;
 }
 
 .pulse span {
@@ -343,10 +553,72 @@ h2 {
   line-height: 1.35;
 }
 
+@media (max-width: 900px) {
+  .landingShell {
+    width: min(100vw - 28px, 1180px);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 30px;
+  }
+
+  .heroCopy h1 {
+    max-width: 420px;
+    font-size: 70px;
+  }
+
+  .heroLead {
+    font-size: 21px;
+  }
+
+  .demoModule {
+    box-shadow: 6px 6px 0 #12120f;
+  }
+}
+
 @media (max-width: 680px) {
+  .landingShell {
+    width: min(100vw - 24px, 1180px);
+    padding-top: 14px;
+  }
+
+  .siteNav,
+  .siteNav nav {
+    gap: 12px;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .heroCopy h1 {
+    font-size: 48px;
+  }
+
+  .heroLead {
+    font-size: 19px;
+  }
+
+  .buttonLink {
+    width: 100%;
+  }
+
+  .miniSteps {
+    grid-template-columns: 1fr;
+  }
+
+  .step + .step {
+    border-top: 2px solid #12120f;
+    border-left: 0;
+  }
+
   .app {
     width: min(100vw - 24px, 920px);
-    padding: 20px 0;
+    margin-top: 34px;
+    padding: 18px;
+    box-shadow: 5px 5px 0 #12120f;
   }
 
   .topbar,
