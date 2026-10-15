@@ -1,4 +1,9 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 Elliot Vaucher and voice-strudel contributors
+
 import { useCallback, useEffect, useRef, useState } from "react";
+import licenseUrl from "../LICENSE.txt?url&no-inline";
+import thirdPartyNoticesUrl from "../THIRD_PARTY_NOTICES.md?url&no-inline";
 import { evaluateStrudel, initStrudelRuntime, stopStrudel } from "./strudelRuntime";
 
 type Status = "idle" | "connecting" | "ready" | "recording" | "thinking" | "proposal" | "playing" | "error";
@@ -660,6 +665,20 @@ export default function App() {
             </div>
           ))}
         </section>
+
+        <footer className="projectFooter" aria-label="License and source">
+          <p>
+            Copyright © 2026 Elliot Vaucher and voice-strudel contributors. Powered by <a href="https://strudel.cc/">Strudel</a>.
+          </p>
+          <p>
+            You can share and modify this software under <a href={licenseUrl}>AGPL-3.0-or-later</a>. It comes without any warranty.
+          </p>
+          <nav aria-label="Source and attribution">
+            <a href={__SOURCE_URL__}>Source code</a>
+            <a href={thirdPartyNoticesUrl}>Third-party notices</a>
+            {import.meta.env.PROD ? <a href={`${import.meta.env.BASE_URL}THIRD_PARTY_LICENSES.txt`}>Dependency licenses</a> : null}
+          </nav>
+        </footer>
       </section>
 
       {showLocalRig ? (

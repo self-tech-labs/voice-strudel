@@ -30,7 +30,7 @@ Requirements:
 Install dependencies:
 
 ```bash
-npm install
+npm ci
 ```
 
 Create your local environment file:
@@ -222,6 +222,27 @@ The Realtime model classified the turn as not being a musical instruction. Try a
 Change the track by adding offbeat hi-hats and a darker bassline.
 ```
 
-## License Notes
+## License and Attribution
 
-This project depends on Strudel packages. Check dependency licenses before redistributing or shipping beyond local experiments.
+Copyright (C) 2026 Elliot Vaucher and voice-strudel contributors.
+
+voice-strudel is free software licensed under the **GNU Affero General Public License, version 3 or later** (`AGPL-3.0-or-later`). You may use, share, and modify it under those terms. It is distributed **without any warranty**, including the implied warranties of merchantability or fitness for a particular purpose. See [LICENSE.txt](LICENSE.txt) for the complete terms.
+
+The application uses [Strudel](https://strudel.cc/), created by Alex McLean, Felix Roos, and the Strudel contributors. Strudel and its audio dependencies retain their own copyrights and licenses. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and Strudel's [integration licensing guidance](https://strudel.cc/technical-manual/project-start/#respect-the-license).
+
+The license applies to the application as a whole, including the frontend, local server, and build scripts. Other dependencies retain their original licenses. The `private` package flag only prevents accidental publication to npm; it does not restrict the rights granted by the AGPL.
+
+### Source and redistribution
+
+The complete application source and build instructions are available in [this public repository](https://github.com/self-tech-labs/voice-strudel). The committed `package-lock.json` pins dependency versions and download locations; `npm ci` installs those versions. Upstream source locations are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+If you redistribute or host a modified version, preserve the copyright and license notices, document your changes and their dates, and offer the complete Corresponding Source under the AGPL at no charge, including the code and scripts needed to build, install, and run that version. Keep the source offer visible to remote users and make sure it matches the version they receive. See sections 4–6 and 13 of [LICENSE.txt](LICENSE.txt).
+
+For a public build:
+
+1. Commit and publish the exact source, including any modifications, in a publicly accessible repository.
+2. Build that committed version with `npm ci` and `npm run build`. The production footer links to that Git commit, using `SOURCE_REVISION`, Vercel's `VERCEL_GIT_COMMIT_SHA`, or the checkout's `HEAD`, in that order. When building from a source archive without Git, set `SOURCE_REVISION` to the full public commit SHA.
+3. If publishing a fork, set `SOURCE_REPOSITORY_URL` to your public GitHub repository URL before building so the source link points to your version.
+4. Deploy the entire `dist/` directory. It includes the AGPL text, attribution notices, and `THIRD_PARTY_LICENSES.txt`, which Vite generates from the dependencies actually bundled. Keep these files and the linked Corresponding Source available with the deployment.
+
+The license and source links appear on both the public landing page and the local voice rig. API keys and local `.env` files are not part of the source distribution; use `.env.example` to configure your own credentials.
