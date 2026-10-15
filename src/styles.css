@@ -1,3 +1,7 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later
+ * Copyright (C) 2026 Elliot Vaucher and voice-strudel contributors
+ */
+
 :root {
   color: #12120f;
   background: #f4f0dd;
@@ -266,6 +270,25 @@ p {
   margin-top: 8px;
   color: #484439;
   line-height: 1.4;
+}
+
+.projectFooter {
+  padding: 22px 0;
+  color: #484439;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.projectFooter a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.projectFooter nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 8px;
 }
 
 .app {
